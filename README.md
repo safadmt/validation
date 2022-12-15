@@ -1,2 +1,2 @@
 # validation
-Client side vallidation using javascript
+Client side HTML form vallidation using javascript
