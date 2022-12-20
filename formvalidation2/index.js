@@ -2,7 +2,22 @@
 
 let alertbox = document.getElementById('alertbox');
 
-
+function checkboxValidation() {
+    let checkboxarray = 0
+    //let form = document.getElementById('formdiv')
+    let hobbies = document.getElementsByName('hobbies[]') 
+    for(let i = 0; i < hobbies.length; i++) {
+        let item = hobbies[i]
+        if(item.checked && item.name === "hobbies[]") {
+            checkboxarray++
+        }
+    }
+    if(checkboxarray === 0) {
+        return false
+    }else{
+        return true
+    }
+}
 document.getElementById('submitbutton').addEventListener('click', function() {
 
     let fname = document.getElementById('fname');
@@ -17,7 +32,7 @@ document.getElementById('submitbutton').addEventListener('click', function() {
     let email = document.getElementById('email');
     let gender_male = document.getElementById('gendermale');
     let gender_famale = document.getElementById('genderfemale');
-    let hobbies = document.getElementById('checkbox');
+    
 
     if(fname.value === "" || fname.value.length < 4) {
         
@@ -48,7 +63,7 @@ document.getElementById('submitbutton').addEventListener('click', function() {
         alertbox.innerHTML = "Email id is required"
     }else if(gender_male.checked != true && gender_famale.checked != true) {
         alertbox.innerHTML = "Please select the gender"
-    }else if(hobbies.checked === false) {
+    }else if(checkboxValidation() === false) {
         
         alertbox.innerHTML = "Please select Hobbies"
         
